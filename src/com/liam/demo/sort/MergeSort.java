@@ -8,9 +8,7 @@ public class MergeSort extends BaseSort {
 
     @Override
     public void doSort(int[] nums) {
-
         mergeSort(nums, 0, nums.length - 1);
-
     }
 
     private void mergeSort(int[] nums, int low, int high) {
