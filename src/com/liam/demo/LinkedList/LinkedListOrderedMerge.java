@@ -9,6 +9,7 @@ public class LinkedListOrderedMerge extends LinkedList{
     /**
      * 合并两个有序链表
      *
+     * 哨兵法
      * 1 准备哨兵节点
      * 2 哨兵指针总是指向两个链表未比较的节点中较小的一个
      * 3 更新哨兵前更新最新未比较节点
@@ -40,6 +41,28 @@ public class LinkedListOrderedMerge extends LinkedList{
         dummy.next = null;
 
         return head;
+    }
+
+
+    /**
+     * 合并两个有序链表
+     * 递归法
+     * 让较小的节点指向递归合并的链表
+     * @param l1 链表1
+     * @param l2 链表2
+     * @return 合并后的链表
+     */
+    public ListNode mergeTwoLists2(ListNode l1, ListNode l2){
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+
+        if (l1.val < l2.val){
+            l1.next = mergeTwoLists(l1.next, l2);
+            return l1;
+        }else {
+            l2.next = mergeTwoLists(l1, l2.next);
+            return l2;
+        }
     }
 
 
