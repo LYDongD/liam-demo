@@ -87,7 +87,7 @@ public class RemotingClient {
         }
     }
 
-    /**
+    /**s
      * 处理读取服务器端发来的信息 的事件
      *
      * @param key
