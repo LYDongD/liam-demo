@@ -9,6 +9,12 @@ public abstract class BaseSort implements Sort {
     }
 
 
+    public static void printAll(int[] nums){
+        for (int num : nums) {
+            System.out.print(num);
+        }
+    }
+
     @Override
     public void sort(int[] nums) {
         doSort(nums);

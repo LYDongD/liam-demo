@@ -22,12 +22,8 @@ public class BubbleSort extends BaseSort {
     public static void main(String args[]) {
 
         int[] nums = new int[]{4, 7, 1, 0, 2, 9, 5, 3, 2};
-
         Sort bubbleSort = new BubbleSort();
         bubbleSort.sort(nums);
-
-        for (int num : nums) {
-            System.out.print(num);
-        }
+        printAll(nums);
     }
 }
