@@ -1,4 +1,4 @@
-package com.liam.demo.netty2;
+package com.liam.demo.netty.http;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

@@ -1,4 +1,4 @@
-package com.liam.demo.netty;
+package com.liam.demo.netty.echo;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

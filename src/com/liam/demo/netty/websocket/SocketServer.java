@@ -1,4 +1,4 @@
-package com.liam.demo.netty2;
+package com.liam.demo.netty.websocket;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -6,29 +6,23 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
-public class HttpServer {
+public class SocketServer {
 
     public static void main(String args[]) {
 
-        //recieve request and deliver to worker
         EventLoopGroup bossGroup = new NioEventLoopGroup();
-        //handle request
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try {
-            ServerBootstrap bootstrap = new ServerBootstrap();
-            bootstrap.group(bossGroup, workerGroup)
+            ServerBootstrap serverBootstrap = new ServerBootstrap();
+            serverBootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(new HttpInitializer());
+                    .childHandler(new WebSocketInitializer());
 
-            //block current thread until bind finished
-            ChannelFuture channelFuture = bootstrap.bind(8081).sync();
-
-            //block current thread until channel close
+            ChannelFuture channelFuture = serverBootstrap.bind(8899).sync();
             channelFuture.channel().closeFuture().sync();
-
-        }catch (InterruptedException exception){
-            exception.printStackTrace();
+        }catch (InterruptedException e){
+            e.printStackTrace();
         }finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
